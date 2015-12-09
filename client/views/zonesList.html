@@ -1,0 +1,30 @@
+<template name="zonesList">
+    <h1>List of your DNS zones</h1>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Zone name</th>
+                <th>Created at</th>
+                <th>Number of records</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each zones}}
+            <tr id="{{this._id}}">
+                <td><a href="{{pathFor 'zonesDetails'}}">{{name}}</a></td>
+                <td>{{moment createdAt 'LLLL'}}</td>
+                <td>{{records.length}}</td>
+                <td>
+                    <a class="btn btn-primary" href="{{pathFor 'zonesDetails'}}">Manage zone</a>
+                    <a class="btn btn-danger" data-zone="{{_id}}" data-action="delete">Delete zone</a>
+                </td>
+            </tr>
+            {{else}}
+            <p class="text-center">No zones exist yet! <a href="{{pathFor 'zonesAdd'}}">Add your first zone!</a></p>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+</template>

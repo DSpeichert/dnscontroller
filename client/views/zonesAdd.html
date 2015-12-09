@@ -1,0 +1,25 @@
+<template name="zonesAdd">
+    <h1 class="page-header">Add a DNS zone</h1>
+
+    <p>You can add any zone that is not on the list already.</p>
+
+    <form class="form-horizontal" role="form" id="add-zone">
+        <div class="form-group">
+            <label for="zone" class="col-sm-2 control-label">Zone</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="zone" placeholder="some.domain.">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="authority" class="col-sm-2 control-label">Authority</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="authority" placeholder="dns.server.name.">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">Add Zone</button>
+            </div>
+        </div>
+    </form>
+</template>

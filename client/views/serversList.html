@@ -1,0 +1,29 @@
+<template name="serversList">
+    <h1>List of your DNS servers</h1>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>HTTP Endpoint</th>
+                <th>Created at</th>
+                <th>Key</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each servers}}
+            <tr id="{{_id}}">
+                <td>{{endpoint}}</td>
+                <td>{{moment createdAt 'LLLL'}}</td>
+                <td>{{key}}</td>
+                <td>
+                    <a class="btn btn-danger" data-server="{{_id}}" data-action="delete">Delete server</a>
+                </td>
+            </tr>
+            {{else}}
+            <p class="text-center">No servers exist yet! <a href="{{pathFor 'serversAdd'}}">Add your first server!</a></p>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+</template>

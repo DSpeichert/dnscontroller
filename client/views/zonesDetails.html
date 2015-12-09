@@ -1,0 +1,51 @@
+<template name="zonesDetails">
+    <table class="table table-bordered table-striped checked-in responsive has-checkbox" id="records-table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>TTL</th>
+            <th>Value</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each zone.records}}
+        <tr>
+            <td style="text-align: center !important;">{{name}}</td>
+            <td style="text-align: center !important;">{{type}}</td>
+            <td style="text-align: center !important;">{{ttl}} seconds</td>
+            <td style="text-align: center !important; white-space: nowrap; max-width: 300px; overflow: hidden; -o-text-overflow: ellipsis; text-overflow: ellipsis;">{{data}}</td>
+            <td style="text-align: center !important;">
+                <a class="btn btn-danger" data-record="{{@index}}" data-action="delete">Delete record</a>
+            </td>
+        </tr>
+        {{/each}}
+
+        <tr>
+            <td style="text-align: center !important;">
+                <div class="input-group">
+                    <input id="addRecord-name" type="text" class="form-control input-sm" placeholder="Name" />
+                    <span class="input-group-addon">.{{zone.name}}</span>
+                </div>
+            </td>
+            <td style="text-align: center !important;"><select id="addRecord-type" class="form-control input-sm">
+                <option>A</option>
+                <option>AAAA</option>
+                <option>CNAME</option>
+                <option>MX</option>
+                <option>SRV</option>
+                <option>TXT</option>
+            </select></td>
+            <td style="text-align: center !important;">
+                <div class="input-group">
+                    <input id="addRecord-ttl" type="number" class="form-control input-sm" min="300" step="1" value="300" />
+                    <span class="input-group-addon">sec</span>
+                </div>
+            </td>
+            <td style="text-align: center !important;"><input id="addRecord-data" type="text" class="form-control input-sm" placeholder="Value" /></td>
+            <td><a class="btn btn-success" id="addRecord"><i class="fa fa-check"></i> Add record</a></td>
+        </tr>
+        </tbody>
+    </table>
+</template>
