@@ -16,7 +16,7 @@ Zones.allow({
         var decision = (userId && doc.userId === userId);
 
         if(decision)
-            Meteor.notifyUserServers(userId);
+            Meteor.notifyUserServers(userId, doc);
 
         return decision;
     },
@@ -25,7 +25,7 @@ Zones.allow({
         var decision =  doc.userId === userId;
 
         if(decision)
-            Meteor.notifyUserServers(userId);
+            Meteor.notifyUserServers(userId, doc);
 
         return decision;
     },
