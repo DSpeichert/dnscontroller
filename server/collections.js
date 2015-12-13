@@ -16,25 +16,22 @@ Zones.allow({
         var decision = (userId && doc.userId === userId);
 
         if(decision)
-            Meteor.notifyUserServers(userId, doc);
+            Meteor.setTimeout(function(){Meteor.notifyUserServers(userId, doc._id)}, 500);
 
         return decision;
     },
     update: function (userId, doc, fields, modifier) {
         // can only change your own documents
-        var decision =  doc.userId === userId;
+        var decision = (doc.userId === userId);
 
         if(decision)
-            Meteor.notifyUserServers(userId, doc);
+            Meteor.setTimeout(function(){Meteor.notifyUserServers(userId, doc._id)}, 500);
 
         return decision;
     },
     remove: function (userId, doc) {
         // can only remove your own documents
-        var decision = doc.userId === userId;
-
-        if(decision)
-            Meteor.notifyUserServers(userId);
+        var decision = (doc.userId === userId);
 
         return decision;
     },
